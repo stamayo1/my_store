@@ -1,13 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
   templateUrl: './img.component.html',
   styleUrls: ['./img.component.scss']
 })
-export class ImgComponent implements OnInit {
 
-  @Input() img: string = ''; 
+export class ImgComponent implements OnInit, OnChanges {
+
+  img: string = ''; 
+
+  @Input('img') set changeImge(newimg: string){
+    // Escucha solo los cambios de este input 
+    this.img = newimg;
+  }
+
   // Comunicar eventos al padre
   @Output() loaded = new EventEmitter<string>(); 
 
@@ -16,6 +23,12 @@ export class ImgComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    //before-during render
+    // chamges inputs -- multiples times
+    console.log('changes', changes)
   }
 
   imgError() {
