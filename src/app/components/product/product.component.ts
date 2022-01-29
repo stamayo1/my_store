@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/Product.model';
 
 @Component({
@@ -11,14 +11,15 @@ export class ProductComponent implements OnInit {
   // De esta forma inicializamos un producto que viene externo, con el 
   // signo de exclamación indicamos que la propiedad existira y que no sera nula
   @Input('product') product!: Product ;
+  @Output() addedProduct = new EventEmitter<Product>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onLoaded(img_loaded:string){
-    console.log('load parent', img_loaded);
+  onAddToCart() {
+    this.addedProduct.emit(this.product);
   }
   
 }

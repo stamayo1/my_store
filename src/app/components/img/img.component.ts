@@ -38,7 +38,6 @@ export class ImgComponent implements OnInit, OnChanges {
 
   imgLoaded() {
     // Si la operación es exitosa y deseo notificar al padre hago
-    console.log("loaded child");
     this.loaded.emit(this.img);
   }
 }
