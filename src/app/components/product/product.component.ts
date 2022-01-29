@@ -17,4 +17,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onLoaded(img_loaded:string){
+    console.log('load parent', img_loaded);
+  }
+  
 }
