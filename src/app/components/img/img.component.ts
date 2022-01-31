@@ -28,7 +28,7 @@ export class ImgComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges){
     //before-during render
     // chamges inputs -- multiples times
-    console.log('changes', changes)
+    // console.log('changes', changes)
   }
 
   imgError() {
