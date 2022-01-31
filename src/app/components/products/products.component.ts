@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   myShoppingCart: Product[] = []; 
-  total = 0;
+  amount = 0;
 
   constructor(
     private storeservice: StoreService,
@@ -34,6 +34,6 @@ export class ProductsComponent implements OnInit {
 
   onAddShoppingCart(product: Product){
     this.storeservice.addProduct(product);
-    this.total = this.storeservice.getTotal();
+    this.amount = this.storeservice.getTotal();
   }
 }

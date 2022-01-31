@@ -6,9 +6,15 @@
         <a href="">
             <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
         </a>
-        <a href="">
-            <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-        </a>
+        <div class="info">
+            <div class="cart">
+                <a href="">
+                    <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
+                </a>
+                <span class="counter">{{ counter }}</span>
+            </div>
+        </div>
+        
     </div>
     <div class="side-menu"  [class.active]="showMenu">
 
@@ -35,10 +41,11 @@
         </nav>
         <div class="info">
             <div class="account">sebastian18t@gmail.com</div>
-            <div>
+            <div class="cart">
                 <a href="">
                     <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
                 </a>
+                <span class="counter">{{ counter }}</span>
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
   styleUrls: ['./img.component.scss']
 })
 
-export class ImgComponent implements OnInit, OnChanges {
+export class ImgComponent {
 
   img: string = ''; 
 
@@ -21,15 +21,6 @@ export class ImgComponent implements OnInit, OnChanges {
   imageDefault: string = "./assets/images/galeria.png";
   
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges){
-    //before-during render
-    // chamges inputs -- multiples times
-    // console.log('changes', changes)
-  }
 
   imgError() {
     // Si no incuentra la url/ img, entonces va a mostrar la imagen por defecto
