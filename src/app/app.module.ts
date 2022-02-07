@@ -10,7 +10,10 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { SwiperModule } from 'swiper/angular';
+import SwiperCore, { Pagination } from "swiper";
 
+SwiperCore.use([Pagination]);
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
-    HttpClientModule
+    HttpClientModule, 
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
