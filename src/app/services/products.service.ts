@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product, CreateProductDTO, UpdateProductDTO } from '../models/Product.model';
-import { retry} from 'rxjs/operators';
 
+import { zip } from 'rxjs';
+import { retry, switchMap} from 'rxjs/operators';
 
 import {environment} from '../../environments/environment';
 
@@ -52,6 +53,32 @@ export class ProductsService {
   delete(id: string){
     // Delete Product
     return this.client.delete<boolean>(`${this.apiUrl}/${id}`);
+  }
+
+
+  // Ejemplo manejo de  callbacks
+  readupdate(id: string){
+
+    // Callback de forma optima, 
+    this.getProduct(id)
+    .pipe(
+      // se usa cuando una tarea depende de la respuesta de otra
+      switchMap((product) => 
+        this.update(product.id, {title: 'nuevo'})
+      )      
+    ).subscribe(data => {
+      console.log(data); 
+    })
+
+    // Ejecutar 2 tareas de forma paralela, que no tienen
+    // depencia una de otra, retorna un array con las respuestas
+    zip(
+      this.getProduct(id),
+      this.update(id, {title: 'change'})
+    ).subscribe(response => {
+      const read = response[0];
+      const update = response[1];
+    })
   }
 
 }
