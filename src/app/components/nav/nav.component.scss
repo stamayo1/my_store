@@ -30,7 +30,7 @@
         justify-content: flex-start;
 
         // Realizar la transición de izq a der 
-        transform: translateX(-100%);
+        transform: translateX(-101%);
         transition: all ease-out .5s;
         
         &.active {

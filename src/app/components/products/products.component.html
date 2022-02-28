@@ -6,6 +6,34 @@
   <app-product 
     [product]="product"
     *ngFor="let product of products"
+
     (addedProduct)="onAddShoppingCart($event)"
+    (showProduct)="onShowDetail($event)"
   ></app-product>
+</div>
+
+<button (click)="loadMore()">Load more</button>
+
+<div class="product-detail" [class.active]="showProductDetail">
+  <div *ngIf="productChosen" >
+    
+    <div class="product-title">
+      <h1>{{ productChosen.title }}</h1>
+      <button (click)="toggleProductDetail()" class="close-detail">x</button>
+    </div>
+    
+    <swiper
+      [slidesPerView]="1"
+      style="padding: 10px;"
+    >
+      <ng-template swiperSlide *ngFor="let img of productChosen.images" >
+          
+        <img [src]="img" [alt]="productChosen.title" style="max-width: 100%;">
+      </ng-template>
+    </swiper>
+
+    <p>{{ productChosen.description }}</p>
+    
+    
+  </div>
 </div>

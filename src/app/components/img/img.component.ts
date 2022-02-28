@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -9,6 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 export class ImgComponent {
 
   img: string = ''; 
+  imageDefault: string = "./assets/images/galeria.png";
 
   @Input('img') set changeImge(newimg: string){
     // Escucha solo los cambios de este input 
@@ -18,8 +19,6 @@ export class ImgComponent {
   // Comunicar eventos al padre
   @Output() loaded = new EventEmitter<string>(); 
 
-  imageDefault: string = "./assets/images/galeria.png";
-  
   constructor() { }
 
   imgError() {

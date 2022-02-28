@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../models/Product.model';
 
 @Component({
@@ -12,11 +12,16 @@ export class ProductComponent {
   // signo de exclamación indicamos que la propiedad existira y que no sera nula
   @Input('product') product!: Product ;
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showProduct = new EventEmitter<string>();
 
   constructor() { }
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
+  }
+
+  onShowDetail(){
+    this.showProduct.emit(this.product.id);
   }
   
 }
