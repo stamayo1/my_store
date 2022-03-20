@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import {environment} from '../../environments/environment';
 import {Auth} from '../../app/models/auth.model';
@@ -21,10 +21,8 @@ export class AuthService {
   }
 
   login(email: string, password: string){
-    
     return this.client.post<Auth>(`${this.apiUrl}/login`, {email, password})
     .pipe(
-
       tap(response => 
         this.tokenservice.savetoken(response.access_token)
       ),
@@ -33,8 +31,11 @@ export class AuthService {
   }
 
   getprofile(){
-    // Conseguir el perfil del usuario logueado
+    // const headers =  new HttpHeaders(); 
+    // headers.set('Authorization', `Bearer ${token}`); 
+    // return this.client.get<User>(`${this.apiUrl}/profile`, {headers});
     
+    // Conseguir el perfil del usuario logueado
     return this.client.get<User>(`${this.apiUrl}/profile`);
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-nav',
@@ -10,9 +12,11 @@ export class NavComponent implements OnInit {
 
   showMenu: boolean = false; 
   counter: number =  0; 
+  profile : User | null = null; 
 
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private authservice : AuthService
   ) { }
 
   ngOnInit(): void {
@@ -27,4 +31,12 @@ export class NavComponent implements OnInit {
     
     this.showMenu = !this.showMenu;
   }
+
+  login(){
+    this.authservice.login("john@mail.com", "changeme")
+    .subscribe(response => {
+      this.profile = response; 
+    });
+  }
+
 }
