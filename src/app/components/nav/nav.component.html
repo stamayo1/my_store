@@ -23,6 +23,7 @@
             <li><a href="">All</a></li>
             <li><a href="">Clothes</a></li>
             <li><a href="">Electronics</a></li>
+            <li *ngIf="!profile" ><button (click)="login()" >Login</button></li>
         </ul>
     </div>
 </div>
@@ -37,10 +38,16 @@
                 <li><a href="">All</a></li>
                 <li><a href="">Clothes</a></li>
                 <li><a href="">Electronics</a></li>
+            
             </ul>
         </nav>
         <div class="info">
-            <div class="account">sebastian18t@gmail.com</div>
+
+            <div class="account" *ngIf="profile else login_button">{{profile.email}}</div>
+            <ng-template #login_button>
+                <button (click)="login()">Login</button>
+            </ng-template>
+
             <div class="cart">
                 <a href="">
                     <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
