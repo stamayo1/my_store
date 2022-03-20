@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,9 +28,8 @@ SwiperCore.use([Pagination]);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
     HttpClientModule, 
-    SwiperModule
+    SwiperModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
