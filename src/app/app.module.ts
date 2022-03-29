@@ -12,6 +12,14 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { SwiperModule } from 'swiper/angular';
 import SwiperCore, { Pagination } from "swiper";
 import { TokenInterceptor} from '../app/interceptors/token.interceptor';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { MycartComponent } from './pages/mycart/mycart.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RecoveryComponent } from './pages/recovery/recovery.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 SwiperCore.use([Pagination]);
@@ -24,6 +32,14 @@ SwiperCore.use([Pagination]);
     ProductsComponent,
     NavComponent,
     TimeAgoPipe,
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent,
+    MycartComponent,
+    LoginComponent,
+    RegisterComponent,
+    RecoveryComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product} from '../../models/Product.model';
 import { StoreService } from 'src/app/services/store.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -8,16 +8,15 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+  @Output() loadMore = new EventEmitter(); 
+
   myShoppingCart: Product[] = []; 
   amount = 0;
   showProductDetail = false; 
   productChosen!: Product;
-
-  limit: number = 10;
-  offset: number = 0;
 
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   
@@ -27,11 +26,6 @@ export class ProductsComponent implements OnInit {
     ){
       
       this.myShoppingCart = this.storeservice.getShoppingCart();
-  }
-
-  ngOnInit(): void {
-
-    this.loadMore();
   }
 
   onAddShoppingCart(product: Product){
@@ -68,13 +62,9 @@ export class ProductsComponent implements OnInit {
     // });
   }
 
-
-  loadMore(){
-    this.productService.getProducts(this.limit, this.offset)
-    .subscribe( data => {
-      this.products = this.products.concat(data);
-      this.offset += this.limit;
-    })
+  onLoadMore(){
+    // Event Biding
+    this.loadMore.emit(); 
   }
 
 
