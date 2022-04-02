@@ -82,9 +82,10 @@ export class ProductsService {
     this.getProduct(id)
     .pipe(
       // se usa cuando una tarea depende de la respuesta de otra
-      switchMap((product) => 
-        this.update(product.id, {title: 'nuevo'})
-      )      
+      switchMap((product) => {
+        return this.update(product.id, {title: 'nuevo'})
+      }), 
+
     ).subscribe(data => {
       console.log(data); 
     })

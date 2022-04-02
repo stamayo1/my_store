@@ -15,18 +15,12 @@
     justify-content: flex-start;
     transition: all ease-out .2s;
     transform: translateX(100%);
+    
     &.active{
       transform: translateX(0);
     }
-  }
-
-.product-title {
-    display: flex;
-    align-items: row;
-    justify-content: space-around;
-    padding: 5px ;
-    font-size: 12px;
 }
+
 
 .close-detail {
     width: 20px;

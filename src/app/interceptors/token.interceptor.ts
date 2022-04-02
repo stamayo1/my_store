@@ -14,9 +14,9 @@ import {TokenService} from '../services/token.service';
 const CHECK_TIME = new HttpContextToken<boolean>(() => false); 
 
 // Contexto que se carga en los request para validar si realizar o no, algo con el interceptor
-// export function checkTime(){
-//   return new HttpContext().set(CHECK_TIME, true)
-// }
+export function checkTime(){
+  return new HttpContext().set(CHECK_TIME, true)
+}
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
