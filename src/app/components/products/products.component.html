@@ -14,29 +14,20 @@
 
 <button (click)="onLoadMore()">Load more</button>
 
-
 <div class="product-detail" [class.active]="showProductDetail">
-  
-  <div class="detail" *ngIf="productChosen">
-    <button (click)="toggleProductDetail()" class="close-detail">x</button>
+  <div *ngIf="productChosen">
+    <button (click)="toggleProductDetail()">Close</button>
+    <h1>{{ productChosen.title }}</h1>
+    <h2>{{ productChosen?.price | currency }}</h2>
+    <p>{{ productChosen?.description }}</p>
+    <swiper
+      [slidesPerView]="1"
+    >
+      <ng-template swiperSlide *ngFor="let img of productChosen.images">
+        <img [src]="img" alt="">
+      </ng-template>
+    </swiper>
     
-    <div class="gallery">
-      <swiper [slidesPerView]="1">
-        <ng-template swiperSlide *ngFor="let img of productChosen.images" >
-          <img [src]="img" [alt]="productChosen.title">
-        </ng-template>
-      </swiper>
-    </div>
-
-    <div>
-      <h1>{{ productChosen?.title }}</h1>
-      <h2>{{ productChosen?.price | currency }}</h2>
-      <p>{{ productChosen?.description }}</p>
-    </div>
-
   </div>
-  
-  
-
 </div>
 

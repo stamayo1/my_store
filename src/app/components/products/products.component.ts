@@ -12,12 +12,16 @@ export class ProductsComponent {
 
   @Input() products: Product[] = [];
   @Output() loadMore = new EventEmitter(); 
-
+  @Input() set productId(id: string | null){
+    if (id){
+      this.onShowDetail(id);
+    }
+  }
+ 
   myShoppingCart: Product[] = []; 
   amount = 0;
   showProductDetail = false; 
   productChosen!: Product;
-
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   
   constructor(
@@ -39,11 +43,16 @@ export class ProductsComponent {
 
   onShowDetail(id: string){
     this.statusDetail = 'loading'; 
+    
+    if(!this.showProductDetail){
+      // Si esta cerrado el toogle, lo abrirá, en caso contrario, conserva el estado
+      this.showProductDetail = true;
+    }
 
     this.productService.getProduct(id)
     .subscribe({
       next: (data) => {
-        this.toggleProductDetail();
+        // this.toggleProductDetail();
         this.productChosen = data;
         this.statusDetail = 'success';
       }, 

@@ -3,6 +3,7 @@ import { Product } from "../../models/Product.model";
 import { ActivatedRoute } from "@angular/router";
 import { ProductsService } from "src/app/services/products.service";
 
+
 import { switchMap } from "rxjs/operators";
 
 @Component({
@@ -11,9 +12,11 @@ import { switchMap } from "rxjs/operators";
   styleUrls: ["./category.component.scss"],
 })
 export class CategoryComponent implements OnInit {
+  
   products: Product[] = [];
-
+  productId : string | null = null;
   categoryId: string | null = null;
+
   limit: number = 10;
   offset: number = 0;
 
@@ -29,10 +32,7 @@ export class CategoryComponent implements OnInit {
     //   this.loadProducts()
     // })
 
-    /**
-     * Captar el id de la categoria a consultar, y realizar el get
-     * de los datos
-     */
+    // Read params of URL
     this.route.paramMap
       .pipe(
         switchMap((params) => {
@@ -53,10 +53,19 @@ export class CategoryComponent implements OnInit {
       .subscribe((data) => {
         this.products = data;
       });
+    
+    // Read query params of URL
+    this.route.queryParamMap
+    .subscribe((params)=>{
+      this.productId = params.get("product");
+    })
+
   }
 
   loadProducts() {
+
     if (this.categoryId) {
+      
       this.productService
         .getByCategory(this.categoryId, this.limit, this.offset)
         .subscribe((data) => {
