@@ -4,7 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ProductsService } from "src/app/services/products.service";
 import { switchMap } from "rxjs/operators";
 
-import { Product } from "../../models/Product.model";
+import { Product } from "src/app/models/Product.model";
 
 @Component({
   selector: "app-product-detail",

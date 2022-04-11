@@ -1,61 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { CategoryComponent } from './pages/category/category.component';
-import { MycartComponent } from './pages/mycart/mycart.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { RecoveryComponent } from './pages/recovery/recovery.component';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   // Configuración reglas de navegacion
+  // {
+  //   path: '',
+  //   component: LayoutComponent, 
+  //   children: [
+  //     {
+  //       // Redirigir a otra url
+  //       path: '',
+  //       redirectTo: "/home",
+  //       pathMatch: "full"
+  //     },
+  //     {
+  //       path: "home",
+  //       component: HomeComponent
+  //     },
+  //     {
+  //       // Paso de parametros por URL
+  //       path: "category/:id",
+  //       component: CategoryComponent
+  //     }
+  //   ]
+  // }
+  
   {
-    // Redirigir a otra url
-    path: "",
-    redirectTo: "/home",
-    pathMatch: "full"
+    // Load the routing of Website module
+    path: '', 
+    loadChildren: () => import('./website/website.module').then(module => module.WebsiteModule)
   },
   {
-    path: "home",
-    component: HomeComponent
-  },
-  {
-    // Paso de parametros por URL
-    path: "category/:id",
-    component: CategoryComponent
-  },
-  {
-    // Paso de parametros por URL
-    path: "product/:id",
-    component: ProductDetailComponent
-  },
-  {
-    path: "login",
-    component: LoginComponent
-  },
-  {
-    path: "register",
-    component: RegisterComponent
-  },
-  {
-    path: "recovery",
-    component: RecoveryComponent
-  },
-  {
-    path: "profile",
-    component: ProfileComponent
-  },
-  {
-    path: "my-cart",
-    component: MycartComponent
-  },
-  {
-    path: "not-found",
-    component: NotFoundComponent
+    // Load the routing of CMS module
+    path: 'cms', 
+    loadChildren: () => import('./cms/cms.module').then(module => module.CmsModule)
   },
   {
     path: '**',
