@@ -21,14 +21,31 @@
     <div class="side-menu"  [class.active]="showMenu">
 
         <button (click)="toggleMenu()" > Cerrar </button>
-        <ul>
-            <li><a routerLinkActive="active" routerLink="home">All</a></li>
+        <ul style="padding-left: 0px;">
+            <li>
+                <a routerLinkActive="active" routerLink="home">
+                    All
+                </a>
+            </li>
             
             <li *ngFor="let category of categories">
                 <a routerLinkActive="active" [routerLink]="['/category', category.id]">{{category.name}}</a>
             </li>
             
-            <li *ngIf="!profile" ><button (click)="login()" >Login</button></li>
+            <li >
+                <button *ngIf="!profile else profileBlock" (click)="login()">
+                    Login
+                </button>
+                <ng-template #profileBlock>
+                    <a routerLink="/profile">
+                        {{profile?.email}}
+                    </a>
+                    <button (click)="logout()">
+                        Logout
+                    </button>
+                    
+                </ng-template>
+            </li>
         </ul>
     </div>
 </div>
@@ -51,11 +68,16 @@
         <div class="info">
 
             <div class="account" > 
-                <button *ngIf="!profile else profileBlock"(click)="login()">
+                <button *ngIf="!profile else profileBlock" (click)="login()">
                     Login
                 </button>
                 <ng-template #profileBlock>
-                    {{profile?.email}}
+                    <a routerLink="/profile">
+                        {{profile?.email}}
+                    </a>
+                    <button (click)="logout()">
+                        Logout
+                    </button>
                 </ng-template>
             </div>
 
