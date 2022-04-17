@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules} from '@angular/router';
 
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CustomPreloadService } from './services/custom-preload.service';
 
 const routes: Routes = [
   // Configuración reglas de navegacion
@@ -30,7 +31,11 @@ const routes: Routes = [
   {
     // Load the routing of Website module
     path: '', 
-    loadChildren: () => import('./website/website.module').then(module => module.WebsiteModule)
+    loadChildren: () => import('./website/website.module').then(module => module.WebsiteModule),
+    data: {
+      preload: true,
+    }
+
   },
   {
     // Load the routing of CMS module
@@ -44,7 +49,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: CustomPreloadService
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

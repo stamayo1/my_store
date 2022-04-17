@@ -18,9 +18,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 import { SwiperModule } from 'swiper/angular';
-import SwiperCore, { Pagination } from "swiper";
+import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([EffectCoverflow, Pagination]);
 
 @NgModule({
   declarations: [
