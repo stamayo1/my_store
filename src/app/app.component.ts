@@ -1,13 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import {FilesService} from './services/files.service'; 
+
+import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  
+export class AppComponent implements OnInit {
+
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService
+  ){
+
+  }
+
+  ngOnInit(){
+    const token = this.tokenService.getToken()
+    
+    if(token){
+      this.authService.getprofile()
+      .subscribe();
+    }
+    
+  }
   // img_rta : string | null =  null; 
 
   // constructor(

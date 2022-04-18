@@ -13,7 +13,7 @@ import {environment} from '../../environments/environment';
 })
 export class ProductsService {
 
-  private apiUrl = `${environment.API_URL}/api/products`;
+  private apiUrl = `${environment.API_URL}/api`;
   
   constructor(
     private client: HttpClient){ 
@@ -22,13 +22,13 @@ export class ProductsService {
   getProducts(limit?: number, offset?: number){
     let params = new HttpParams(); 
     
-    if (limit !== undefined && offset !== undefined) { 
+    if (limit && offset !== undefined) { 
       // Paginar: cantidad de elementos, punto de partida
       params = params.set('limit', limit);
       params = params.set('offset', offset);
     }
 
-    return this.client.get<Product[]>(this.apiUrl, {params})
+    return this.client.get<Product[]>(`${this.apiUrl}/products`, {params})
     .pipe(
       retry(3) // Reintentar la solicitud maximo 3 veces, en caso de que la primera falla
     );
@@ -37,23 +37,42 @@ export class ProductsService {
 
   getProduct(id: string){
     // Get Array of products
-    return this.client.get<Product>(`${this.apiUrl}/${id}`);
+    return this.client.get<Product>(`${this.apiUrl}/products/${id}`);
+  }
+
+  getByCategory(categoryId: string, limit?: number, offset?: number){
+    // Get all products order by category
+    let params = new HttpParams(); 
+    
+    if (limit && offset !== undefined) { 
+      // Paginar: cantidad de elementos, punto de partida
+      params = params.set('limit', limit);
+      params = params.set('offset', offset);
+    }
+
+    return this.client.get<Product[]>(`${this.apiUrl}/categories/${categoryId}/products`, {params})
+    .pipe(
+      retry(3) // Reintentar la solicitud maximo 3 veces, en caso de que la primera falla
+    );
+    
   }
 
   create(dto: CreateProductDTO){
     // New product
-    return this.client.post<Product>(this.apiUrl, dto);
+    return this.client.post<Product>(`${this.apiUrl}/products`, dto);
   }
 
   update(id: string, dto: UpdateProductDTO){
     // Update total or partial data of product
-    return this.client.put<Product>(`${this.apiUrl}/${id}`, dto);
+    return this.client.put<Product>(`${this.apiUrl}/products/${id}`, dto);
   }
 
   delete(id: string){
     // Delete Product
-    return this.client.delete<boolean>(`${this.apiUrl}/${id}`);
+    return this.client.delete<boolean>(`${this.apiUrl}/products/${id}`);
   }
+
+  
 
 
   // Ejemplo manejo de  callbacks
@@ -63,9 +82,10 @@ export class ProductsService {
     this.getProduct(id)
     .pipe(
       // se usa cuando una tarea depende de la respuesta de otra
-      switchMap((product) => 
-        this.update(product.id, {title: 'nuevo'})
-      )      
+      switchMap((product) => {
+        return this.update(product.id, {title: 'nuevo'})
+      }), 
+
     ).subscribe(data => {
       console.log(data); 
     })
@@ -81,4 +101,5 @@ export class ProductsService {
     })
   }
 
+  
 }

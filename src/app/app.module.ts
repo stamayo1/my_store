@@ -1,35 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { QuicklinkModule} from 'ngx-quicklink';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ImgComponent } from './components/img/img.component';
-import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
-import { NavComponent } from './components/nav/nav.component';
-import { TimeAgoPipe } from './pipes/time-ago.pipe';
-import { SwiperModule } from 'swiper/angular';
-import SwiperCore, { Pagination } from "swiper";
+
 import { TokenInterceptor} from '../app/interceptors/token.interceptor';
+import { NotFoundComponent } from './not-found/not-found.component';
 
-
-SwiperCore.use([Pagination]);
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImgComponent,
-    ProductComponent,
-    ProductsComponent,
-    NavComponent,
-    TimeAgoPipe,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    SwiperModule,
+    QuicklinkModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}

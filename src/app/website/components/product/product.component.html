@@ -1,0 +1,9 @@
+ <a [routerLink]="['/product', product.id]">
+    <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+</a> 
+<h2>{{ product.price | currency: 'USD'}}</h2>
+<p>{{product.title }}</p>
+ 
+<!-- <button (click)="onShowDetail()">Detalle</button> -->
+<button (click)="onAddToCart()">Añadir</button>
+<a routerLink="." [queryParams]="{product: product.id}">Ver detalle</a>
