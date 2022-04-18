@@ -18,12 +18,12 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.authservice.getprofile()
+    
+    this.authservice.user$
     .subscribe(data => {
       this.user = data;
     })
-    
+
   }
 
 }

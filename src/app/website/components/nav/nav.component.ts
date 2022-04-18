@@ -34,6 +34,10 @@ export class NavComponent implements OnInit {
       this.counter = products.length; 
     })
 
+    this.authservice.user$.subscribe(data => {
+      this.profile = data; 
+    })
+
     this.getAllCategories();
   }
 
@@ -43,8 +47,8 @@ export class NavComponent implements OnInit {
 
   login(){
     this.authservice.login("john@mail.com", "changeme")
-    .subscribe(response => {
-      this.profile = response; 
+    .subscribe(() => {
+      this.router.navigate(['/profile']);
     });
   }
 
