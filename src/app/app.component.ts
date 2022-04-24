@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
+import {filter, map} from 'rxjs/operators';
+
 // import {FilesService} from './services/files.service'; 
 
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
+
+import { VersionReadyEvent } from './models/sw.model';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +18,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private tokenService: TokenService
+    private tokenService: TokenService, 
+    private swUpdate: SwUpdate
   ){
-
   }
 
+
   ngOnInit(){
+    //Continuar con la sesion
     const token = this.tokenService.getToken()
     
     if(token){
@@ -26,7 +33,20 @@ export class AppComponent implements OnInit {
       .subscribe();
     }
     
+    this.updatePwa();
   }
+
+  updatePwa(){
+    this.swUpdate.versionUpdates.pipe(
+      filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+      map(evt => ({
+        type: 'UPDATE_AVAILABLE',
+        current: evt.currentVersion,
+        available: evt.latestVersion,
+      })))
+      .subscribe();
+  }
+
   // img_rta : string | null =  null; 
 
   // constructor(

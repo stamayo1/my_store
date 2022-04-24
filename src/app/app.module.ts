@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 
 import { TokenInterceptor} from '../app/interceptors/token.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -19,7 +21,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    QuicklinkModule,
+    QuicklinkModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+}),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}

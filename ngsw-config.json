@@ -1,0 +1,49 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+         
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
+        ]
+      }
+    }
+  ], 
+  "dataGroups": [
+    {
+      "name": "api",
+      "version": 1,
+      "urls": [
+        "https://young-sands-07814.herokuapp.com/api/categories",
+        "https://young-sands-07814.herokuapp.com/api/products/**",
+        "https://placeimg.com/640/480/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 7, 
+        "maxAge": "5m",
+        "strategy":"freshness", 
+        "timeout": "2s30u"
+      }
+    }
+    
+  ]
+}

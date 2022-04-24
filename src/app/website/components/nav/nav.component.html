@@ -31,21 +31,28 @@
             <li *ngFor="let category of categories">
                 <a routerLinkActive="active" [routerLink]="['/category', category.id]">{{category.name}}</a>
             </li>
-            
+
+            <li>
+                <button (click)="installByUser()" *ngIf="installEvent">
+                    Install
+                </button>
+            </li>
+
             <li >
                 <button *ngIf="!profile else profileBlock" (click)="login()">
                     Login
                 </button>
                 <ng-template #profileBlock>
-                    <a routerLink="/profile">
+                    <a routerLink="/profile" style="text-decoration: none" >
                         {{profile?.email}}
                     </a>
-                    <button (click)="logout()">
+                    <button (click)="logout()" >
                         Logout
                     </button>
                     
                 </ng-template>
             </li>
+
         </ul>
     </div>
 </div>
@@ -57,12 +64,24 @@
                 <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
             </a>
             <ul>
-                <li><a routerLinkActive="active" routerLink="home">All</a></li>
+                <li>
+                    <a routerLinkActive="active" routerLink="home">
+                        All
+                    </a>
+                </li>
 
                 <li *ngFor="let category of categories">
-                    <a routerLinkActive="active" [routerLink]="['/category', category.id]">{{category.name}}</a>
+                    <a routerLinkActive="active" [routerLink]="['/category', category.id]">
+                        {{category.name}}
+                    </a>
                 </li>
-            
+                
+                <li>
+                    <button (click)="installByUser()" *ngIf="installEvent">
+                        Install
+                    </button>
+                </li>
+
             </ul>
         </nav>
         <div class="info">
@@ -71,8 +90,9 @@
                 <button *ngIf="!profile else profileBlock" (click)="login()">
                     Login
                 </button>
+
                 <ng-template #profileBlock>
-                    <a routerLink="/profile">
+                    <a routerLink="/profile" style="text-decoration: none">
                         {{profile?.email}}
                     </a>
                     <button (click)="logout()">
@@ -80,7 +100,7 @@
                     </button>
                 </ng-template>
             </div>
-
+            
             <div class="cart">
                 <a href="">
                     <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
