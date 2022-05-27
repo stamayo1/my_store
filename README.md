@@ -12,4 +12,4 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 * Shareable pages
 * Manage of files
 * Routing
-* Use of RXJS
+* Use of Behaviour RXJS
