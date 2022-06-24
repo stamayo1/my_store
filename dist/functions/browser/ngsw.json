@@ -1,0 +1,128 @@
+{
+  "configVersion": 1,
+  "timestamp": 1656030074695,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/900.830403e8d981257f.js",
+        "/95.4ee210724e5551f8.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.e2e2606becc5188d.js",
+        "/manifest.webmanifest",
+        "/polyfills.ddd9d196649f5e50.js",
+        "/runtime.4f04b355430f69ca.js",
+        "/styles.85e32383122a56b2.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/files/test.pdf",
+        "/assets/files/test.txt",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/images/album.webp",
+        "/assets/images/bike.webp",
+        "/assets/images/books.webp",
+        "/assets/images/galeria.png",
+        "/assets/images/glasses.webp",
+        "/assets/svg/bt_add_to_cart.svg",
+        "/assets/svg/bt_added_to_cart.svg",
+        "/assets/svg/icon_menu.svg",
+        "/assets/svg/icon_shopping_cart.svg",
+        "/assets/svg/icon_shopping_cart_notification.svg",
+        "/assets/svg/logo_yard_sale.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "patterns": [
+        "https:\\/\\/young-sands-07814\\.herokuapp\\.com\\/api\\/categories",
+        "https:\\/\\/young-sands-07814\\.herokuapp\\.com\\/api\\/products\\/.*",
+        "https:\\/\\/placeimg\\.com\\/640\\/480\\/.*"
+      ],
+      "strategy": "freshness",
+      "maxSize": 7,
+      "maxAge": 300000,
+      "timeoutMs": 2030,
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/900.830403e8d981257f.js": "5d85c752bdf7e2c3bcc3200421125fe54b319241",
+    "/95.4ee210724e5551f8.js": "37113cf95c5bb76ad0880120b81ab0a5cedcccaf",
+    "/assets/files/test.pdf": "f5ae9280ff54ad3ad3503420700067d5473adae6",
+    "/assets/files/test.txt": "e042e688eba9f4795f5a06a2874e58fbb4c29f03",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/images/album.webp": "6a2462b79a7beb8955af4418f6ddf672bb661d38",
+    "/assets/images/bike.webp": "99dfe5bce2112d67eb22402810fac792e2caf62d",
+    "/assets/images/books.webp": "8f4d881e1c052bef025c0e8c6ff556aa237b6e07",
+    "/assets/images/galeria.png": "1927d0bc1ceb12468dd160a2572a7d4f3ea7af80",
+    "/assets/images/glasses.webp": "4b389537df6e0df93980540fba0bd7cccc0cdc38",
+    "/assets/svg/bt_add_to_cart.svg": "7ef7c89672e70f4269a4ef0ebd3217a00e7c6cfb",
+    "/assets/svg/bt_added_to_cart.svg": "5ecacb2b7563d0099897bddff8cd627a847ec099",
+    "/assets/svg/icon_menu.svg": "d52cdc29038929f616de233d894b7df2e49b8c06",
+    "/assets/svg/icon_shopping_cart.svg": "b1e79b2daadbdf2668ec34196e3fa7c9cafbb9e6",
+    "/assets/svg/icon_shopping_cart_notification.svg": "97aee55f241614ff163e5e90575b228314cf714e",
+    "/assets/svg/logo_yard_sale.svg": "c4416944f64db6aca5824f2ae095ed95175dc20f",
+    "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "/index.html": "41e2d3a18794062a18605bfd6593ffd13af0e050",
+    "/main.e2e2606becc5188d.js": "9d96e41a6d300d629f1c22315bb86d5f3eb78287",
+    "/manifest.webmanifest": "28d53baccbd96bcc0015c2fca19566d627bd29c4",
+    "/polyfills.ddd9d196649f5e50.js": "d8fb84b14428e43ee98cf6baf862b98158c007e7",
+    "/runtime.4f04b355430f69ca.js": "96bdb35e4f3bf2d3c4b493fd33c959db912de68c",
+    "/styles.85e32383122a56b2.css": "4801ca21d7c661bd94968394765ce63676283a55"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

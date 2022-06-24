@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/my_store",
+    "public": "functions",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "ngssr"
       }
     ]
   }

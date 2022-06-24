@@ -1,23 +1,35 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject} from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  constructor() { }
+  constructor(
+    @Inject(DOCUMENT) private _doc: Document
+  ) { }
 
-  savetoken(token: string){
-    localStorage.setItem('token', token); 
+  savetoken(token: string): void{
+    
+    this.getWindow()?.localStorage.setItem('token', token);
   }
 
   getToken(){
-    const token = localStorage.getItem('token');
-    return token
+    const val =  this.getWindow()?.localStorage?.getItem('token');
+    
+    return val
   }
 
-  removeToken(){
-    localStorage.removeItem('token');
+  removeToken(): void{
+
+    this.getWindow()?.localStorage.removeItem('token');
   }
+
+  private getWindow(): Window | null {
+
+    return this._doc.defaultView;
+  }
+
 }
 

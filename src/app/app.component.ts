@@ -4,6 +4,7 @@ import {filter, map} from 'rxjs/operators';
 
 // import {FilesService} from './services/files.service'; 
 
+import { Title, Meta } from '@angular/platform-browser';
 import { AuthService } from './services/auth.service';
 import { TokenService } from './services/token.service';
 
@@ -19,8 +20,50 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private tokenService: TokenService, 
-    private swUpdate: SwUpdate
+    private swUpdate: SwUpdate, 
+    private meta: Meta, 
+    private title: Title
   ){
+
+    // Para ñadir el título de la página
+    this.title.setTitle('Tienda virtual');
+    // Añadir el tag de la info de la página
+    this.meta.updateTag(
+      {
+        name: 'keywords',
+        content: 'tienda, virtual, pueblo'
+      });
+
+    this.meta.updateTag(
+      {
+        name: 'description',
+        content: 'tienda virtual pueblo'
+      });
+
+    this.meta.updateTag(
+      {
+        name: 'og:title',
+        content: 'tienda virtual'
+      });
+
+    this.meta.updateTag(
+      {
+        name: 'og:description',
+        content: 'tienda virtual pueblo'
+      });
+
+    this.meta.updateTag(
+      {
+        name: 'og:type',
+        content: 'article'
+      });
+
+    this.meta.updateTag(
+      {
+        name: 'og:image',
+        content: 'https://placeimg.com/640/480/p'
+      });
+
   }
 
 

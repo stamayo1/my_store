@@ -18,7 +18,7 @@ import { environment } from '../environments/environment';
     NotFoundComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule, 
     QuicklinkModule, ServiceWorkerModule.register('ngsw-worker.js', {
