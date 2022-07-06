@@ -13,3 +13,4 @@ Navigate to `http://localhost:4200/`. The app will automatically reload if you c
 * Manage of files
 * Routing
 * Use of Behaviour RXJS
+* Test
